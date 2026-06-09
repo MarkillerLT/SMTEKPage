@@ -8,6 +8,9 @@
   --error: #e24b4a;
   --AzulOscuro: #1a6880;
   --AzulClaro: #e8f4f8;
+  /* --FondoHero: rgb(26, 104, 128, 0.15); */
+  --FondoHero: rgba(255, 255, 255, 0.55);
+  --H1Negro: #000000;
 
   --bg-body: var(--fondo);
   --bg-header: var(--blanco);
@@ -40,6 +43,8 @@ body.dark-mode {
   --bg-section: #1a2330;
   --bg-section-alt: #162030;
   --bg-footer: #0f1922;
+  --FondoHero: rgba(0, 0, 0, 0.65);
+  --H1Negro: #ffffff;
 
   --text-primary: #c8d8e4;
   --text-heading: #e8f4f8;
@@ -278,7 +283,7 @@ body.dark-mode .toggle-thumb {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background: var(--FondoHero);
 }
 
 .hero-content {
@@ -299,10 +304,13 @@ body.dark-mode .toggle-thumb {
 .hero h1 {
   font-size: clamp(3rem, 5vw, 5rem);
   font-weight: 800;
-  color: var(--blanco);
+  /* color: var(--blanco); */
+  color: var(--H1Negro);
   margin: 0 0 2rem;
   line-height: 1.15;
+  /* -webkit-text-stroke: 2px color-mix(in srgb, var(--H1Negro), white 70%); */
 }
+
 
 .hero h1 span {
   color: var(--acentos);
@@ -310,7 +318,8 @@ body.dark-mode .toggle-thumb {
 
 .hero p {
   font-size: clamp(1.5rem, 2vw, 1.8rem);
-  color: rgba(255, 255, 255, 0.82);
+  /* color: rgba(255, 255, 255, 0.82); */
+  color: var(--H1Negro);
   margin: 0 auto 3.5rem;
   max-width: 60rem;
   text-align: center;
@@ -346,13 +355,13 @@ body.dark-mode .toggle-thumb {
 
 .btn-outline {
   background: transparent;
-  color: var(--blanco);
+  color: var(--H1Negro);
   font-size: 1.5rem;
   font-weight: 600;
   padding: 1.2rem 3rem;
   border-radius: 0.6rem;
   text-decoration: none;
-  border: 2px solid rgba(255, 255, 255, 0.55);
+  border: 2px solid var(--H1Negro);
   cursor: pointer;
   transition: border-color var(--transition), background-color var(--transition), transform var(--transition);
 }
