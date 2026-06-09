@@ -4,58 +4,706 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SMTEK Smart Technologies</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" href="assets/css/normalize.css" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/normalize.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!-- Reveal animation style -->
+    <style>
+      .reveal {
+        opacity: 0;
+        transform: translateY(2.4rem);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
   </head>
   <body>
+    <!-- ══════════════════════════════════════════
+         HEADER
+    ══════════════════════════════════════════ -->
     <header>
       <div class="logo">
-        <img src="assets/img/1.svg" alt="logo" />
+        <!-- Reemplaza con tu <img> cuando tengas el SVG -->
+        <img
+          id="logo-img"
+          src="assets/img/1.svg"
+          alt="SMTEK Logo"
+          onerror="
+            this.style.display = 'none';
+            document.getElementById('logo-fallback').style.display = 'flex';
+          "
+        />
+        <div id="logo-fallback" class="logo-placeholder" style="display: none">
+          SMTEK
+        </div>
       </div>
-      <div class="actions">
-        <span> Modo Oscuro </span>
-      </div>
+
+      <button
+        id="dark-toggle"
+        class="dark-toggle"
+        aria-label="Cambiar modo de color"
+        type="button"
+      >
+        <span class="toggle-icon" aria-hidden="true">🌙</span>
+        <span class="toggle-label">Modo Oscuro</span>
+        <div class="toggle-track" aria-hidden="true">
+          <div class="toggle-thumb"></div>
+        </div>
+      </button>
     </header>
+
+    <!-- ══════════════════════════════════════════
+         NAVEGACIÓN
+    ══════════════════════════════════════════ -->
     <div class="nav-bg">
-      <nav class="contenedor navegacion-principal">
-        <a href="#">Inicio</a>
-        <a href="#">Productos</a>
-        <a href="#">Servicios</a>
-        <a href="#">Contacto</a>
-        <a href="#">Cotizar</a>
-      </nav>
+      <div class="contenedor" style="display: flex; align-items: center">
+        <button
+          id="hamburger"
+          class="hamburger"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          type="button"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav id="nav-principal" class="navegacion-principal" style="flex: 1">
+          <a href="#">Inicio</a>
+          <a href="#">Productos</a>
+          <a href="#">Servicios</a>
+          <a href="#">Contacto</a>
+          <a href="#" class="cta-nav">Cotizar</a>
+        </nav>
+      </div>
     </div>
+
+    <!-- ══════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════ -->
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <h1>Tecnología <span>inteligente</span><br />para tu empresa</h1>
+        <p>
+          Soluciones tecnológicas de vanguardia que optimizan tus procesos,
+          impulsan la productividad y transforman la manera en que operas.
+        </p>
+        <div class="hero-btns">
+          <a href="#" class="btn-primary">Conocer más</a>
+          <a href="#" class="btn-outline">Ver productos</a>
+        </div>
+      </div>
+    </section>
+
     <main>
-      <section>
-        <h2>¿Quienes somos?</h2>
+      <!-- ══════════════════════════════════════════
+           ¿QUIÉNES SOMOS?
+      ══════════════════════════════════════════ -->
+      <section id="quienes-somos">
+        <div class="contenedor">
+          <div class="section-header reveal">
+            <span class="section-label">Acerca de nosotros</span>
+            <h2>¿Quiénes somos?</h2>
+            <p>
+              Una empresa comprometida con la innovación tecnológica y el
+              crecimiento de nuestros clientes.
+            </p>
+          </div>
+
+          <div class="quienes-grid">
+            <div class="quienes-texto reveal">
+              <p>
+                En SMTEK Smart Technologies llevamos más de una década
+                desarrollando soluciones tecnológicas a la medida para empresas
+                de todos los tamaños. Nuestra misión es simplificar la
+                complejidad tecnológica y traducirla en resultados concretos
+                para tu negocio.
+              </p>
+              <p>
+                Contamos con un equipo altamente especializado en integración de
+                sistemas, automatización de procesos y soporte técnico de clase
+                mundial. Creemos que la tecnología debe ser un aliado
+                estratégico, no un obstáculo, y trabajamos cada día para hacer
+                esa visión una realidad en cada empresa que nos confía su
+                transformación digital.
+              </p>
+              <p>
+                Desde nuestra sede en México operamos a nivel regional,
+                sirviendo a clientes en manufactura, retail, logística y
+                servicios financieros con soluciones probadas y soporte en
+                tiempo real.
+              </p>
+            </div>
+
+            <div class="quienes-stats">
+              <div class="stat-card reveal">
+                <span
+                  class="numero"
+                  data-counter
+                  data-target="12"
+                  data-suffix="+"
+                  >0+</span
+                >
+                <span class="etiqueta">Años de experiencia</span>
+              </div>
+              <div class="stat-card reveal">
+                <span
+                  class="numero"
+                  data-counter
+                  data-target="340"
+                  data-suffix="+"
+                  >0+</span
+                >
+                <span class="etiqueta">Proyectos entregados</span>
+              </div>
+              <div class="stat-card reveal">
+                <span
+                  class="numero"
+                  data-counter
+                  data-target="98"
+                  data-suffix="%"
+                  >0%</span
+                >
+                <span class="etiqueta">Satisfacción de clientes</span>
+              </div>
+              <div class="stat-card reveal">
+                <span
+                  class="numero"
+                  data-counter
+                  data-target="60"
+                  data-suffix="+"
+                  >0+</span
+                >
+                <span class="etiqueta">Aliados tecnológicos</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      <section>
-        <h2>¿Qué hacemos?</h2>
+
+      <!-- ══════════════════════════════════════════
+           ¿QUÉ HACEMOS?
+      ══════════════════════════════════════════ -->
+      <section id="servicios">
+        <div class="contenedor">
+          <div class="section-header reveal">
+            <span class="section-label">Nuestros servicios</span>
+            <h2>¿Qué hacemos?</h2>
+            <p>
+              Ofrecemos un portafolio integral de soluciones tecnológicas
+              adaptadas a las necesidades específicas de tu industria.
+            </p>
+          </div>
+
+          <div class="servicios-grid">
+            <div class="servicio-card reveal">
+              <span class="servicio-icono">⚙️</span>
+              <h3>Automatización de procesos</h3>
+              <p>
+                Diseñamos e implementamos flujos de trabajo automatizados que
+                reducen errores humanos, aceleran tiempos de respuesta y liberan
+                a tu equipo para tareas de mayor valor estratégico.
+              </p>
+            </div>
+            <div class="servicio-card reveal">
+              <span class="servicio-icono">🔗</span>
+              <h3>Integración de sistemas</h3>
+              <p>
+                Conectamos tus plataformas existentes —ERP, CRM, e-commerce—
+                para que fluyan de manera coherente, eliminando silos de
+                información y duplicidad de datos en toda la organización.
+              </p>
+            </div>
+            <div class="servicio-card reveal">
+              <span class="servicio-icono">📊</span>
+              <h3>Analítica e inteligencia</h3>
+              <p>
+                Transformamos tus datos en dashboards accionables e informes
+                predictivos que te permiten tomar decisiones informadas y
+                anticiparte a las tendencias del mercado.
+              </p>
+            </div>
+            <div class="servicio-card reveal">
+              <span class="servicio-icono">🛡️</span>
+              <h3>Ciberseguridad</h3>
+              <p>
+                Protegemos tu infraestructura digital con auditorías de
+                seguridad, monitoreo continuo y políticas de acceso que blindan
+                los activos más críticos de tu empresa frente a amenazas.
+              </p>
+            </div>
+            <div class="servicio-card reveal">
+              <span class="servicio-icono">☁️</span>
+              <h3>Soluciones en la nube</h3>
+              <p>
+                Migramos y gestionamos tus cargas de trabajo en los principales
+                proveedores cloud, optimizando costos operativos y garantizando
+                disponibilidad de 99.9 % para tus aplicaciones.
+              </p>
+            </div>
+            <div class="servicio-card reveal">
+              <span class="servicio-icono">🎧</span>
+              <h3>Soporte y mantenimiento</h3>
+              <p>
+                Brindamos soporte técnico especializado con tiempos de respuesta
+                garantizados, mantenimiento preventivo y planes de continuidad
+                para que tu operación nunca se detenga.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
-      <section>
-        <h2>Aliados comerciales</h2>
+
+      <!-- ══════════════════════════════════════════
+           ALIADOS COMERCIALES
+      ══════════════════════════════════════════ -->
+      <section class="aliados-section" id="aliados">
+        <div class="contenedor">
+          <div class="section-header reveal">
+            <span class="section-label">Partners</span>
+            <h2>Aliados comerciales</h2>
+            <p>
+              Trabajamos con las marcas líderes de la industria para ofrecerte
+              las mejores soluciones tecnológicas disponibles en el mercado.
+            </p>
+          </div>
+
+          <div class="aliados-grid">
+            <div class="aliado-card reveal">
+              <div class="aliado-logo-placeholder">LOGO</div>
+              <span>Partner A</span>
+            </div>
+            <div class="aliado-card reveal">
+              <div class="aliado-logo-placeholder">LOGO</div>
+              <span>Partner B</span>
+            </div>
+            <div class="aliado-card reveal">
+              <div class="aliado-logo-placeholder">LOGO</div>
+              <span>Partner C</span>
+            </div>
+            <div class="aliado-card reveal">
+              <div class="aliado-logo-placeholder">LOGO</div>
+              <span>Partner D</span>
+            </div>
+            <div class="aliado-card reveal">
+              <div class="aliado-logo-placeholder">LOGO</div>
+              <span>Partner E</span>
+            </div>
+            <div class="aliado-card reveal">
+              <div class="aliado-logo-placeholder">LOGO</div>
+              <span>Partner F</span>
+            </div>
+          </div>
+        </div>
       </section>
-      <section>
-        <h2>Clientes principales</h2>
+
+      <!-- ══════════════════════════════════════════
+           CLIENTES PRINCIPALES
+      ══════════════════════════════════════════ -->
+      <section id="clientes">
+        <div class="contenedor">
+          <div class="section-header reveal">
+            <span class="section-label">Lo que dicen de nosotros</span>
+            <h2>Clientes principales</h2>
+            <p>
+              Empresas que confían en SMTEK para impulsar su operación
+              tecnológica día a día.
+            </p>
+          </div>
+
+          <div class="clientes-grid">
+            <div class="cliente-card reveal">
+              <p class="quote">
+                "La integración de sistemas que SMTEK realizó en nuestra planta
+                redujo tiempos de reporte en un 60 %. El equipo fue profesional,
+                puntual y siempre disponible para resolver dudas. Sin duda
+                volveremos a trabajar con ellos."
+              </p>
+              <div class="cliente-info">
+                <div class="cliente-avatar">MR</div>
+                <div>
+                  <span class="nombre">Manuel Rodríguez</span>
+                  <span class="empresa"
+                    >Director de Operaciones — Manufactura Noreste</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="cliente-card reveal">
+              <p class="quote">
+                "Desde que implementamos las soluciones cloud de SMTEK, nuestra
+                disponibilidad pasó de 95 % a 99.8 %. El retorno de inversión
+                fue visible en menos de seis meses. Totalmente recomendados."
+              </p>
+              <div class="cliente-info">
+                <div class="cliente-avatar">LP</div>
+                <div>
+                  <span class="nombre">Laura Pérez</span>
+                  <span class="empresa">CTO — Distribuidora LogiPlus</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="cliente-card reveal">
+              <p class="quote">
+                "El proyecto de ciberseguridad superó nuestras expectativas.
+                Detectaron vulnerabilidades críticas que otros proveedores
+                habían pasado por alto. SMTEK es nuestro aliado de confianza
+                para todo lo relacionado con TI."
+              </p>
+              <div class="cliente-info">
+                <div class="cliente-avatar">CG</div>
+                <div>
+                  <span class="nombre">Carlos Gutiérrez</span>
+                  <span class="empresa"
+                    >Gerente de TI — Finanzas Regionales</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      <section>
-        <h2>Contador de éxito</h2>
+
+      <!-- ══════════════════════════════════════════
+           CONTADOR DE ÉXITO
+      ══════════════════════════════════════════ -->
+      <section class="contador-section" id="resultados">
+        <div class="contenedor">
+          <div class="section-header reveal">
+            <span class="section-label">Nuestros números</span>
+            <h2>Contador de éxito</h2>
+            <p>
+              Más de una década de resultados medibles respaldan cada solución
+              que entregamos.
+            </p>
+          </div>
+
+          <div class="contador-grid">
+            <div class="contador-item reveal">
+              <span
+                class="contador-numero"
+                data-counter
+                data-target="340"
+                data-suffix="+"
+                >0+</span
+              >
+              <span class="contador-label">Proyectos completados</span>
+            </div>
+            <div class="contador-item reveal">
+              <span
+                class="contador-numero"
+                data-counter
+                data-target="120"
+                data-suffix="+"
+                >0+</span
+              >
+              <span class="contador-label">Clientes activos</span>
+            </div>
+            <div class="contador-item reveal">
+              <span
+                class="contador-numero"
+                data-counter
+                data-target="99"
+                data-suffix="%"
+                >0%</span
+              >
+              <span class="contador-label">Uptime garantizado</span>
+            </div>
+            <div class="contador-item reveal">
+              <span
+                class="contador-numero"
+                data-counter
+                data-target="12"
+                data-suffix=" años"
+                >0</span
+              >
+              <span class="contador-label">De experiencia</span>
+            </div>
+          </div>
+        </div>
       </section>
-      <section>
-        <h2>Productos más destacados</h2>
+
+      <!-- ══════════════════════════════════════════
+           PRODUCTOS DESTACADOS
+      ══════════════════════════════════════════ -->
+      <section id="productos">
+        <div class="contenedor">
+          <div class="section-header reveal">
+            <span class="section-label">Portafolio</span>
+            <h2>Productos más destacados</h2>
+            <p>
+              Herramientas propias y de terceros cuidadosamente seleccionadas
+              para resolver los retos más comunes de las empresas modernas.
+            </p>
+          </div>
+
+          <div class="productos-grid">
+            <div class="producto-card reveal">
+              <div class="producto-imagen">📡</div>
+              <div class="producto-body">
+                <span class="producto-badge">Monitoreo</span>
+                <h3>SmartMonitor Pro</h3>
+                <p>
+                  Plataforma de monitoreo en tiempo real para infraestructura
+                  crítica. Alertas inteligentes, reportes automáticos y panel
+                  centralizado para equipos de TI de cualquier tamaño.
+                </p>
+                <a href="#" class="producto-link">Ver detalles →</a>
+              </div>
+            </div>
+
+            <div class="producto-card reveal">
+              <div class="producto-imagen">🔄</div>
+              <div class="producto-body">
+                <span class="producto-badge">Integración</span>
+                <h3>ConnectFlow</h3>
+                <p>
+                  Middleware de integración sin código que conecta más de 200
+                  aplicaciones empresariales. Sincronización bidireccional de
+                  datos, mapeo visual y auditoría completa de transacciones.
+                </p>
+                <a href="#" class="producto-link">Ver detalles →</a>
+              </div>
+            </div>
+
+            <div class="producto-card reveal">
+              <div class="producto-imagen">🧩</div>
+              <div class="producto-body">
+                <span class="producto-badge">Automatización</span>
+                <h3>AutoTask Suite</h3>
+                <p>
+                  Motor de automatización de procesos de negocio con interfaz
+                  drag-and-drop. Reduce hasta un 70 % el tiempo dedicado a
+                  tareas repetitivas y genera ahorros medibles desde el primer
+                  mes.
+                </p>
+                <a href="#" class="producto-link">Ver detalles →</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      <section>
-        <h2>Propuesta de valor</h2>
+
+      <!-- ══════════════════════════════════════════
+           PROPUESTA DE VALOR
+      ══════════════════════════════════════════ -->
+      <section class="valor-section" id="valor">
+        <div class="contenedor">
+          <div class="section-header reveal">
+            <span class="section-label">¿Por qué elegirnos?</span>
+            <h2>Propuesta de valor</h2>
+            <p>
+              Lo que nos distingue no es solo la tecnología que implementamos,
+              sino la manera en que acompañamos a cada cliente a lo largo del
+              camino.
+            </p>
+          </div>
+
+          <div class="valor-grid">
+            <div class="valor-item reveal">
+              <div class="valor-icono-wrap">🎯</div>
+              <div>
+                <h3>Enfoque en resultados</h3>
+                <p>
+                  Cada proyecto arranca con métricas de éxito claramente
+                  definidas. Medimos el impacto real en tu operación y ajustamos
+                  la solución hasta alcanzar los objetivos acordados.
+                </p>
+              </div>
+            </div>
+
+            <div class="valor-item reveal">
+              <div class="valor-icono-wrap">🤝</div>
+              <div>
+                <h3>Acompañamiento continuo</h3>
+                <p>
+                  No desaparecemos al entregar el proyecto. Nuestro equipo de
+                  Customer Success te acompaña durante toda la vida útil de la
+                  solución, con revisiones periódicas y mejoras proactivas.
+                </p>
+              </div>
+            </div>
+
+            <div class="valor-item reveal">
+              <div class="valor-icono-wrap">⚡</div>
+              <div>
+                <h3>Implementación ágil</h3>
+                <p>
+                  Metodologías ágiles con sprints de dos semanas que nos
+                  permiten entregar valor de forma incremental. Tus equipos ven
+                  resultados en semanas, no en meses.
+                </p>
+              </div>
+            </div>
+
+            <div class="valor-item reveal">
+              <div class="valor-icono-wrap">🔒</div>
+              <div>
+                <h3>Seguridad garantizada</h3>
+                <p>
+                  Todas nuestras soluciones son diseñadas con un enfoque de
+                  seguridad desde el primer día. Cumplimos con estándares
+                  internacionales y normativas locales vigentes.
+                </p>
+              </div>
+            </div>
+
+            <div class="valor-item reveal">
+              <div class="valor-icono-wrap">📐</div>
+              <div>
+                <h3>Soluciones a la medida</h3>
+                <p>
+                  No creemos en el modelo "talla única". Escuchamos tus
+                  necesidades específicas y construimos o configuramos cada
+                  solución para encajar perfectamente en tu contexto.
+                </p>
+              </div>
+            </div>
+
+            <div class="valor-item reveal">
+              <div class="valor-icono-wrap">💡</div>
+              <div>
+                <h3>Innovación constante</h3>
+                <p>
+                  Estamos en permanente capacitación con las últimas
+                  tecnologías. Tú te beneficias de ese conocimiento actualizado
+                  sin necesidad de invertir en formación interna.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      <section>
-        <h2>Redes, ubicaciones, mapa, contacto</h2>
+
+      <!-- ══════════════════════════════════════════
+           CONTACTO / REDES / MAPA
+      ══════════════════════════════════════════ -->
+      <section class="contacto-section" id="contacto">
+        <div class="contenedor">
+          <div class="section-header reveal">
+            <span class="section-label">Hablemos</span>
+            <h2>Encuéntranos</h2>
+            <p>
+              Estamos listos para escuchar tus necesidades y ayudarte a
+              encontrar la solución ideal para tu empresa.
+            </p>
+          </div>
+
+          <div class="contacto-grid">
+            <!-- Info de contacto -->
+            <div class="contacto-info reveal">
+              <h3>Información de contacto</h3>
+
+              <div class="contacto-item">
+                <div class="contacto-icono">📍</div>
+                <div>
+                  <span class="label">Dirección</span>
+                  <span class="valor"
+                    >Av. Tecnológico 1234, Colonia Centro<br />Querétaro, QRO,
+                    México</span
+                  >
+                </div>
+              </div>
+
+              <div class="contacto-item">
+                <div class="contacto-icono">📞</div>
+                <div>
+                  <span class="label">Teléfono</span>
+                  <span class="valor">+52 (442) 000-0000</span>
+                </div>
+              </div>
+
+              <div class="contacto-item">
+                <div class="contacto-icono">✉️</div>
+                <div>
+                  <span class="label">Correo electrónico</span>
+                  <span class="valor">contacto@smtek.mx</span>
+                </div>
+              </div>
+
+              <div class="contacto-item">
+                <div class="contacto-icono">🕐</div>
+                <div>
+                  <span class="label">Horario de atención</span>
+                  <span class="valor">Lunes a Viernes, 9:00 — 18:00 hrs</span>
+                </div>
+              </div>
+
+              <div class="redes-sociales">
+                <a href="#" class="red-social" aria-label="LinkedIn">💼</a>
+                <a href="#" class="red-social" aria-label="Twitter / X">🐦</a>
+                <a href="#" class="red-social" aria-label="Facebook">📘</a>
+                <a href="#" class="red-social" aria-label="Instagram">📸</a>
+              </div>
+            </div>
+
+            <!-- Mapa placeholder -->
+            <div class="reveal">
+              <div class="mapa-placeholder">
+                <span>🗺️</span>
+                <p>Aquí va el mapa de Google Maps</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
+
+    <!-- ══════════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════════ -->
+    <footer>
+      <div class="contenedor footer-inner">
+        <img
+          src="assets/img/1b.svg"
+          alt="SMTEK Logo"
+          class="footer-logo"
+          onerror="
+            this.style.display = 'none';
+            document.getElementById('footer-logo-fallback').style.display =
+              'flex';
+          "
+        />
+        <div
+          id="footer-logo-fallback"
+          class="footer-logo-placeholder"
+          style="display: none"
+        >
+          SMTEK
+        </div>
+
+        <p>© 2025 SMTEK Smart Technologies. Todos los derechos reservados.</p>
+
+        <div style="display: flex; gap: 2rem">
+          <a href="#">Aviso de privacidad</a>
+          <a href="#">Términos de uso</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="assets/js/script.js"></script>
   </body>
 </html>
